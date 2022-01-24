@@ -6,15 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Error.fs" />
+    <Compile Include="./Services/DivisionService.fs" />
+    <Compile Include="Help.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <ProjectReference Include="..\Task.Context\Task.Context.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Repository.EntityFrameworkCore" Version="1.0.0" />
   </ItemGroup>
 
