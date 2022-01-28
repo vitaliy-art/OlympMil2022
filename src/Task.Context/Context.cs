@@ -7,11 +7,11 @@ namespace Task.Context;
 
 public class Context : DbContext
 {
-    private static bool _migrated;
+    private readonly bool _migrated = false;
 
-    public DbSet<Division>? Divisions { get; set; }
-    public DbSet<Cadet>? Cadets { get; set; }
-    public DbSet<Officer>? Officers { get; set; }
+    public DbSet<Division> Divisions { get; set; }
+    public DbSet<Cadet> Cadets { get; set; }
+    public DbSet<Officer> Officers { get; set; }
 
     public Context(DbContextOptions<Context> options)
         : base(options)
@@ -28,7 +28,7 @@ public class SqliteRepositoryFactory :
     RepositoryFactory<Context>,
     IDesignTimeDbContextFactory<Context>
 {
-    private readonly string? _connectionString = null;
+    private readonly string _connectionString = null;
 
     public SqliteRepositoryFactory(string connectionString)
     {
@@ -38,13 +38,13 @@ public class SqliteRepositoryFactory :
     public SqliteRepositoryFactory()
     {}
 
-    public override Context CreateDbContext(string[]? args = null)
+    public override Context CreateDbContext(string[] args = null)
     {
         DbContextOptionsBuilder<Context> builder = new();
         if (_connectionString is null)
-            builder = builder.UseSqlite("Filename=bd.db");
+            builder = builder.UseSqlite("Filename=db.bd");
         else
-            builder.UseSqlite(_connectionString);
+            builder = builder.UseSqlite(_connectionString);
         builder = builder.EnableSensitiveDataLogging();
         return new Context(builder.Options);
     }

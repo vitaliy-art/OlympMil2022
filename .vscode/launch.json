@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/Task/bin/Debug/net6.0/Task.dll",
-            "args": [],
+            "args": ["division", "list"],
             "cwd": "${workspaceFolder}/src/Task",
             "stopAtEntry": false,
             "console": "integratedTerminal"

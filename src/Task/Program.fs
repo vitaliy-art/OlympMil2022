@@ -5,7 +5,7 @@ open Error
 open Services
 open Task.Context
 
-let factory = new SqliteRepositoryFactory("Filename=db.bd")
+let factory = new SqliteRepositoryFactory("Filename=bd.db")
 
 let division args =
     let service = DivisionService factory

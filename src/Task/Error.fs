@@ -17,3 +17,6 @@ let private notSetParameterMessage p c =
 
 let notSetParameter p c =
     printf "%s" <| notSetParameterMessage p c
+
+let notValidParameter v n =
+    printf "Error: not valid value \"%s\" for parameter \"%s\"" v n
