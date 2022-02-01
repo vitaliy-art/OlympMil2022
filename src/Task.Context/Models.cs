@@ -27,15 +27,17 @@ public class Person
 public class Division
 {
     public int Id { get; set; }
+    public int DisplayId { get; set; }
     public string Name { get; set; }
 
     public override string ToString() =>
-        $"{{Division: {{Id: {Id}, Name: {Name}}}";
+        $"{{Division: {{Id: {DisplayId}, Name: {Name}}}";
 }
 
 public class Cadet
 {
     public int Id { get; set; }
+    public int DisplayId { get; set; }
 
     [Required]
     public Person Person { get; set; }
@@ -55,7 +57,7 @@ public class Cadet
         {
             result += arg switch
             {
-                'i' => $"Id: {Id}",
+                'i' => $"Id: {DisplayId}",
                 'r' => $"Rank: {Rank}",
                 'f' => $"FirstName: {Person?.FirstName}",
                 'm' => $"MiddleName: {Person?.MiddleName}",
@@ -75,6 +77,9 @@ public class Cadet
 public class Officer
 {
     public int Id { get; set; }
+    public int DisplayId { get; set; }
+
+    [Required]
     public Person Person { get; set; }
     public SeniorRanks Rank { get; set ;}
 
@@ -90,7 +95,7 @@ public class Officer
         {
             result += arg switch
             {
-                'i' => $"Id: {Id}",
+                'i' => $"Id: {DisplayId}",
                 'r' => $"Rank: {Rank}",
                 'f' => $"FirstName: {Person?.FirstName}",
                 'm' => $"MiddleName: {Person?.MiddleName}",
