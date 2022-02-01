@@ -29,11 +29,23 @@ type DivisionService(factory: RepositoryFactory<Context>) =
         - edit -\n\
         - delete -" |> printf "%s"
 
-    member private _.addHandle (args: string[]) =
+    member private _.GetNewDivisionDisplayId: int =
+        use rep = factory.GetRepository<Division>()
+        let divIds = rep.GetAllAsync().Result.Select(fun d -> d.DisplayId).ToArray()
+
+        let rec fndIdx i =
+            if not <| Array.contains i divIds then i
+            else fndIdx (i + 1)
+
+        fndIdx 1
+
+
+    member private x.addHandle (args: string[]) =
         let addDivision name =
             use rep = factory.GetRepository<Division>()
             let division = new Division()
             division.Name <- name
+            division.DisplayId <- x.GetNewDivisionDisplayId
             rep.AddAsync(division).Wait()
             printf "Ok"
 
@@ -53,7 +65,7 @@ type DivisionService(factory: RepositoryFactory<Context>) =
     member private _.listHandle (args: string[]) =
         let getDivisions : List<Division> =
             use rep = factory.GetRepository<Division>()
-            rep.GetAllAsync().Result.ToList()
+            rep.GetAllAsync().Result.OrderBy(fun d -> d.DisplayId).ToList()
 
         if args.[0] = "help" then
             "Division list command has no parameters" |> printf "%s"
@@ -64,14 +76,14 @@ type DivisionService(factory: RepositoryFactory<Context>) =
     member private _.editHandle (args: string[]) =
         let editDivision (id: int, name: string) =
             use rep = factory.GetRepository<Division>()
-            let division = rep.GetByIdAsync(id).Result
+            let division = rep.GetAllQueryableAsync().Result.FirstOrDefault(fun d -> d.DisplayId = id)
             division.Name <- name
             rep.SaveAsync(division).Wait()
 
         if args.[0] = "help" then
             "Division edit command parameters:\n\
-            -i : Division ID\n\
-            -n : Name" |> printf "%s"
+            -i : Division ID, required\n\
+            -n : Name, required" |> printf "%s"
         else
             let id = getValue("-i",  args)
             let name = getValue("-n", args)
@@ -84,8 +96,9 @@ type DivisionService(factory: RepositoryFactory<Context>) =
     member private _.deleteHandle (args: string[]) =
         let getDivisions (id: option<int>) =
             use rep = factory.GetRepository<Division>()
-            if id.IsNone then [|rep.GetByIdAsync(id.Value).Result|]
-            else rep.GetAllAsync().Result.ToArray()
+            match id with
+            | Some(x) -> [|rep.GetAllQueryableAsync().Result.FirstOrDefault(fun d -> d.DisplayId = x)|]
+            | None -> rep.GetAllAsync().Result.ToArray()
 
         let deleteDivisions (divisions: Division[]) =
             use rep = factory.GetRepository<Division>()
