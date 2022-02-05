@@ -452,5 +452,10 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+## Local
 src/Task/db.bd
 src/Task.Context/db.bd
+src/Task/bd.db
+src/Task/bd.db-shm
+src/Task/bd.db-wal

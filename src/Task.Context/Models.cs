@@ -50,7 +50,7 @@ public class Cadet
 
     public string ToString(string args)
     {
-        var result = "{Division: {";
+        var result = "{Cadet: {";
         var lastIndex = args.Length - 1;
 
         foreach (var arg in args)
@@ -63,7 +63,6 @@ public class Cadet
                 'm' => $"MiddleName: {Person?.MiddleName}",
                 'l' => $"LastName: {Person?.LastName}",
                 'b' => $"BirthDate: {Person?.BirthDate.ToString("yyyy-MM-dd")}",
-                'd' => $"Division: {Division?.Id}",
                 _ => ""
             };
             result += args[lastIndex] == arg ? "}" : ", ";
@@ -86,6 +85,8 @@ public class Officer
     public int? DivisionId { get; set; }
     public Division Division { get; set; }
 
+    public override string ToString() => ToString("irfmlb");
+
     public string ToString(string args)
     {
         var result = "{Officer: {";
@@ -101,7 +102,6 @@ public class Officer
                 'm' => $"MiddleName: {Person?.MiddleName}",
                 'l' => $"LastName: {Person?.LastName}",
                 'b' => $"BirthDate: {Person?.BirthDate.ToString("yyyy-MM-dd")}",
-                'd' => $"Division: {Division?.Id}",
                 _ => ""
             };
             result += args[lastIndex] == arg ? "}" : ", ";

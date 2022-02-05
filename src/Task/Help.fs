@@ -3,7 +3,8 @@ module Help
 let private helpMessage =
     "Commands:\n\
     - help -\n\
-    - division -"
+    - division -\n\
+    - cadet -"
 
 let writeGlobalHelp =
     printf "%s" helpMessage

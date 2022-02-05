@@ -9,6 +9,7 @@
     <Compile Include="Error.fs" />
     <Compile Include="Help.fs" />
     <Compile Include="./Services/DivisionService.fs" />
+    <Compile Include="./Services/CadetService.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

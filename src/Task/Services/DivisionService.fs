@@ -27,9 +27,10 @@ type DivisionService(factory: RepositoryFactory<Context>) =
         - list -\n\
         - add -\n\
         - edit -\n\
-        - delete -" |> printf "%s"
+        - delete -"
+        |> printf "%s"
 
-    member private _.GetNewDivisionDisplayId: int =
+    member private _.getNewDivisionDisplayId: int =
         use rep = factory.GetRepository<Division>()
         let divIds = rep.GetAllAsync().Result.Select(fun d -> d.DisplayId).ToArray()
 
@@ -45,13 +46,14 @@ type DivisionService(factory: RepositoryFactory<Context>) =
             use rep = factory.GetRepository<Division>()
             let division = new Division()
             division.Name <- name
-            division.DisplayId <- x.GetNewDivisionDisplayId
+            division.DisplayId <- x.getNewDivisionDisplayId
             rep.AddAsync(division).Wait()
             printf "Ok"
 
         if args.[0] = "help" then
             "Division add command parameters:\n\
-            -n : division name, required" |> printf "%s"
+            -n : division name, required"
+            |> printf "%s"
         else
             if not <| Array.contains "-n" args then
                 notEnoughParams "add" "division"
@@ -83,7 +85,8 @@ type DivisionService(factory: RepositoryFactory<Context>) =
         if args.[0] = "help" then
             "Division edit command parameters:\n\
             -i : Division ID, required\n\
-            -n : Name, required" |> printf "%s"
+            -n : Name, required"
+            |> printf "%s"
         else
             let id = getValue("-i",  args)
             let name = getValue("-n", args)
@@ -108,7 +111,8 @@ type DivisionService(factory: RepositoryFactory<Context>) =
         if args.[0] = "help" then
             "Division delete command parameters:\n\
             -i : Division ID\n\
-            -a : Delete all divisions" |> printf "%s"
+            -a : Delete all divisions"
+            |> printf "%s"
         else
             let id = getValue("-i", args)
             let all = Array.contains "-a" args
