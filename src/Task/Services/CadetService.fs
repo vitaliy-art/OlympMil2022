@@ -78,7 +78,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -d : division ID\n\
             -r : rank\n\
             -o : division officer ID\n\
-            -f : filter, possible id, lastName\n\
+            -s : sorting, possible id, lastName\n\
             -p : properties view, combination of i - id, r - rank, f - firstName, m - middleName, l - lastName, b - birthDate"
             |> printf "%s"
         else
@@ -98,12 +98,12 @@ type CadetService(factory: RepositoryFactory<Context>) =
                                             | null -> None
                                             | x -> Enum.Parse<JuniorRanks>(x) |> Some
             let cadets = this.getCadets(dId, lName, divDId, offDId, rank)
-            let filtered = match getValue("-f", args) with
+            let sorted = match getValue("-s", args) with
                             | "id" -> cadets.OrderBy(fun c -> c.DisplayId).ToArray()
                             | "lastName" -> cadets.OrderBy(fun c -> c.Person.LastName).ToArray()
                             | _ -> cadets
 
-            for cadet in filtered do
+            for cadet in sorted do
                 match getValue("-p", args) with
                 | null -> cadet.ToString() |> printf "%s\n"
                 | value -> cadet.ToString(value) |> printf "%s\n"
@@ -164,7 +164,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -l : last name\n\
             -b : birth date, format yyyy-MM-dd\n\
             -r : rank\n\
-            -d : division ID\n"
+            -d : division ID"
             |> printf "%s"
         else
             if this.paramMissing([|"-i"|], args) then notEnoughParams "edit" "cadet"

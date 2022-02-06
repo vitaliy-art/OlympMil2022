@@ -26,7 +26,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
         - list -\n\
         - add -\n\
         - edit -\n\
-        - delete -\n"
+        - delete -"
         |> printf "%s"
 
     member private _.getNewOfficerDisplayId : int =
@@ -85,7 +85,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             -d : division ID\n\
             -r : rank\n\
             -c : cadet ID\n\
-            -f : filter, possible id, lastName\n\
+            -s : sorting, possible id, lastName\n\
             -p : properties view, combination of i - id, r - rank, f - firstName, m - middleName, l - lastName, b - birthDate"
             |> printf "%s"
         else
@@ -101,15 +101,15 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             let rank = match getValue("-r", args) with
                         | null -> None
                         | x -> Enum.Parse<SeniorRanks>(x) |> Some
-            let cadDId = match getValue("-f", args) with
+            let cadDId = match getValue("-c", args) with
                             | null -> None
                             | x -> x |> int |> Some
             let officers = this.getOfficers(dId, lName, divDId, cadDId, rank)
-            let filtered = match getValue("-f", args) with
+            let sorted = match getValue("-s", args) with
                             | "id" -> officers.OrderBy(fun o -> o.DisplayId).ToArray()
                             | "lastName" -> officers.OrderBy(fun o -> o.Person.LastName).ToArray()
                             | _ -> officers
-            for officer in filtered do
+            for officer in sorted do
                 match getValue("-o", args) with
                 | null -> officer.ToString() |> printf "%s"
                 | value -> officer.ToString(value) |> printf "%s"
@@ -165,7 +165,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             -l : last name\n\
             -b : birth date, format yyyy-MM-dd\n\
             -r : rank\n\
-            -d : division ID\n"
+            -d : division ID"
             |> printf "%s"
         else
             if this.paramMissing([|"-i"|], args) then notEnoughParams "edit" "officer"
@@ -203,7 +203,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
                 rep.SaveAsync(officer).Wait()
                 printf "Ok"
 
-    member private this.deleteHandle (args:string[]) =
+    member private _.deleteHandle (args:string[]) =
         if args.[0] = "help" then
             "Officer delete command parameters:\n\
             -i : ID\n\
