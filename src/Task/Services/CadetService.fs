@@ -12,12 +12,12 @@ type CadetService(factory: RepositoryFactory<Context>) =
     member this.Handle (args:string[]) =
         if Array.length args > 0 then
             match args.[0] with
-                | "help" -> CadetService.HelpHandle
-                | "add" -> if Array.length args > 1 then this.addHandle args[1..] else notEnoughParams "add" "cadet"
-                | "list" -> if Array.length args > 1 then this.listHanlde args[1..] else this.listHanlde args[0..]
-                | "edit" -> if Array.length args > 1 then this.editHandle args[1..] else notEnoughParams "edit" "cadet"
-                | "delete" -> if Array.length args > 1 then this.deleteHandle args[1..] else notEnoughParams "delete" "cadet"
-                | _ -> commandNotFound args.[0] "cadet"
+            | "help" -> CadetService.HelpHandle
+            | "add" -> if Array.length args > 1 then this.addHandle args[1..] else notEnoughParams "add" "cadet"
+            | "list" -> if Array.length args > 1 then this.listHanlde args[1..] else this.listHanlde args[0..]
+            | "edit" -> if Array.length args > 1 then this.editHandle args[1..] else notEnoughParams "edit" "cadet"
+            | "delete" -> if Array.length args > 1 then this.deleteHandle args[1..] else notEnoughParams "delete" "cadet"
+            | _ -> commandNotFound args.[0] "cadet"
         else
             DivisionService.HelpHandle
 
@@ -27,7 +27,8 @@ type CadetService(factory: RepositoryFactory<Context>) =
         - list -\n\
         - add -\n\
         - edit -\n\
-        - delete -\n" |> printf "%s"
+        - delete -\n"
+        |> printf "%s"
 
     member private _.getNewCadetDisplayId: int =
         use rep = factory.GetRepository<Cadet>()
@@ -62,7 +63,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
         | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId = x)
         | _ -> ()
         match offDId with
-        | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId = this.getOfficer(x).Division.DisplayId)
+        | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId |> Nullable = this.getOfficer(x).DivisionId)
         | _ -> ()
         match rank with
         | Some(x) -> query <- query.Where(fun c -> c.Rank = x)
@@ -78,7 +79,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -r : rank\n\
             -o : division officer ID\n\
             -f : filter, possible id, lastName\n\
-            -p : properties, combination of i - id, r - rank, f - firstName, m - middleName, l - lastName, b - birthDate"
+            -p : properties view, combination of i - id, r - rank, f - firstName, m - middleName, l - lastName, b - birthDate"
             |> printf "%s"
         else
             let dId: option<int> = match getValue("-i", args) with
@@ -129,7 +130,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -l : last name, required\n\
             -b : birth date, required, format yyyy-MM-dd\n\
             -r : rank, required\n\
-            -d : division ID,required\n"
+            -d : division ID, required\n"
             |> printf "%s"
         else
             if this.paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) then notEnoughParams "add" "cadet"
@@ -179,23 +180,23 @@ type CadetService(factory: RepositoryFactory<Context>) =
                 let cadet = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DisplayId = dId).First()
 
                 match fName with
-                    | null -> ()
-                    | name -> cadet.Person.FirstName <- name
+                | null -> ()
+                | name -> cadet.Person.FirstName <- name
                 match mName with
-                    | null -> ()
-                    | name -> cadet.Person.MiddleName <- name
+                | null -> ()
+                | name -> cadet.Person.MiddleName <- name
                 match lName with
-                    | null -> ()
-                    | name -> cadet.Person.LastName <- name
+                | null -> ()
+                | name -> cadet.Person.LastName <- name
                 match bDate with
-                    | null -> ()
-                    | date -> cadet.Person.BirthDate <- DateOnly.Parse(date)
+                | null -> ()
+                | date -> cadet.Person.BirthDate <- DateOnly.Parse(date)
                 match rank with
-                    | null -> ()
-                    | rank -> cadet.Rank <- Enum.Parse<JuniorRanks>(rank)
+                | null -> ()
+                | rank -> cadet.Rank <- Enum.Parse<JuniorRanks>(rank)
                 match divDId with
-                    | null -> ()
-                    | id -> cadet.DivisionId <- this.getDivision(id |> int).Id
+                | null -> ()
+                | id -> cadet.DivisionId <- this.getDivision(id |> int).Id
 
                 rep.SaveAsync(cadet).Wait()
                 printf "Ok"

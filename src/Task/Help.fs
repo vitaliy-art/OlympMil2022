@@ -4,7 +4,8 @@ let private helpMessage =
     "Commands:\n\
     - help -\n\
     - division -\n\
-    - cadet -"
+    - cadet -\n\
+    - officer -"
 
 let writeGlobalHelp =
     printf "%s" helpMessage

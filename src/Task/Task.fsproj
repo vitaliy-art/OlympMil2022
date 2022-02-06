@@ -10,6 +10,7 @@
     <Compile Include="Help.fs" />
     <Compile Include="./Services/DivisionService.fs" />
     <Compile Include="./Services/CadetService.fs" />
+    <Compile Include="./Services/OfficerService.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

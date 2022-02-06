@@ -12,12 +12,12 @@ type DivisionService(factory: RepositoryFactory<Context>) =
     member x.Handle (args:string[]) =
         if Array.length args > 0 then
             match args.[0] with
-                | "help" -> DivisionService.HelpHandle
-                | "add" -> if Array.length args > 1 then x.addHandle args[1..] else notEnoughParams "add" "division"
-                | "list" -> if Array.length args > 1 then x.listHandle args[1..] else x.listHandle args[0..]
-                | "edit" -> if Array.length args > 1 then x.editHandle args[1..] else notEnoughParams "edit" "division"
-                | "delete" -> if Array.length args > 1 then x.deleteHandle args[1..] else notEnoughParams "delete" "division"
-                | _ -> commandNotFound args.[0] "division"
+            | "help" -> DivisionService.HelpHandle
+            | "add" -> if Array.length args > 1 then x.addHandle args[1..] else notEnoughParams "add" "division"
+            | "list" -> if Array.length args > 1 then x.listHandle args[1..] else x.listHandle args[0..]
+            | "edit" -> if Array.length args > 1 then x.editHandle args[1..] else notEnoughParams "edit" "division"
+            | "delete" -> if Array.length args > 1 then x.deleteHandle args[1..] else notEnoughParams "delete" "division"
+            | _ -> commandNotFound args.[0] "division"
         else
             DivisionService.HelpHandle
 

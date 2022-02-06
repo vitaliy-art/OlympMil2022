@@ -15,14 +15,19 @@ let cadet args =
     let service = CadetService factory
     service.Handle args
 
+let officer args =
+    let service = OfficerService factory
+    service.Handle args
+
 [<EntryPoint>]
 let main args =
     if Array.length args > 0 then
         match args.[0] with
-            | "help" -> writeGlobalHelp
-            | "division" -> if Array.length args > 1 then division args[1..] else DivisionService.HelpHandle
-            | "cadet" -> if Array.length args > 1 then cadet args[1..] else CadetService.HelpHandle
-            | _ -> commandNotFound args.[0] "main"
+        | "help" -> writeGlobalHelp
+        | "division" -> if Array.length args > 1 then division args[1..] else DivisionService.HelpHandle
+        | "cadet" -> if Array.length args > 1 then cadet args[1..] else CadetService.HelpHandle
+        | "officer" -> if Array.length args > 1 then officer args[1..] else OfficerService.HelpHandle
+        | other -> commandNotFound other "main"
     else
         writeGlobalHelp
     0
