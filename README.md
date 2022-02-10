@@ -3,3 +3,4 @@
 Включает задание, методику проверки, пример решения, инструмент проверки и тесты для проверки для курсантов и для проверяющих.
 
 Пример решения: [./src/Task](https://github.com/vitaliy-art/OlympMil2022/tree/main/src/Task)
+Документы: [./docs](https://github.com/vitaliy-art/OlympMil2022/tree/main/docs)
