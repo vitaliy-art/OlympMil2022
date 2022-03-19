@@ -22,9 +22,9 @@ func main() {
 		stages[int32(i)].Run(params)
 
 		if stages[int32(i)].GetSuccess() {
-			fmt.Print(string(colorGreen), i)
+			fmt.Print(string(colorGreen), "Test ", i, ": Ok\n")
 		} else {
-			fmt.Print(string(colorRed), i)
+			fmt.Print(string(colorRed), "Test ", i, ": Fail\n")
 		}
 	}
 
@@ -32,11 +32,11 @@ func main() {
 	failResults := ""
 	successResults := ""
 
-	for _, s := range stages {
-		result := s.GetResultsString() + "\n\n" + strings.Repeat("=", 24) + "\n" + strings.Repeat("=", 24)
+	for i := 1; i < len(stages)+1; i++ {
+		result := stages[int32(i)].GetResultsString() + "\n\n" + strings.Repeat("=", 24) + "\n" + strings.Repeat("=", 24) + "\n\n"
 
-		if s.GetSuccess() {
-			totalScore += s.Score
+		if stages[int32(i)].GetSuccess() {
+			totalScore += stages[int32(i)].Score
 			successResults += result
 		} else {
 			failResults += result

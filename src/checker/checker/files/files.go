@@ -40,7 +40,7 @@ func GetStages(filenames []string) map[int32]*models.Stage {
 
 	for _, fn := range filenames {
 		fnId := strings.ReplaceAll(strings.ReplaceAll(fn, ".json", ""), "./stages/test_stage_", "")
-		id, err := strconv.ParseInt(fnId, 32, 32)
+		id, err := strconv.ParseInt(fnId, 10, 32)
 
 		if err != nil {
 			log.Fatal(err)
@@ -66,7 +66,7 @@ func GetStages(filenames []string) map[int32]*models.Stage {
 
 func writeResults(result, dir string) string {
 	path := filepath.Join(".", dir)
-	fName := filepath.Join(path, fmt.Sprint(time.Now().Format("2006-01-02 23-23-59"), ".txt"))
+	fName := filepath.Join(path, fmt.Sprint(time.Now().Format("2006-01-02 15-04-05.99"), ".txt"))
 
 	if err := os.MkdirAll(path, os.ModePerm); err != nil {
 		panic(err)

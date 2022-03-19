@@ -462,3 +462,4 @@ src/Task/bd.db-wal
 docs/.~lock.Задание.docx#
 src/checker/checker/fails
 src/checker/checker/successes
+src/checker/checker/bd.db

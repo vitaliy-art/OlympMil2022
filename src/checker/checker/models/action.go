@@ -59,6 +59,12 @@ func (a *Action) Run(params []string) {
 	} else {
 		a.result = strings.Split(string(out), "\n")
 	}
+
+	i := len(a.result) - 1
+
+	if a.result[i] == "" && i != 0 {
+		a.result = a.result[:i]
+	}
 }
 
 func (a Action) IsSuccess() (result bool) {
@@ -78,6 +84,7 @@ func (a Action) IsSuccess() (result bool) {
 func (a Action) GetResultString() string {
 	result := fmt.Sprint(strings.Repeat(" ", 4), "Action ", a.Id, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Success: ", a.IsSuccess(), "\n")
+	result += fmt.Sprint(strings.Repeat(" ", 8), "Duration: ", a.duration, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Critical: ", a.IsCritical, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Command: ")
 
