@@ -460,3 +460,5 @@ src/Task/bd.db
 src/Task/bd.db-shm
 src/Task/bd.db-wal
 docs/.~lock.Задание.docx#
+src/checker/checker/fails
+src/checker/checker/successes

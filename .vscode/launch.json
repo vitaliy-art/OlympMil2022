@@ -8,13 +8,23 @@
             "name": "Launch Task",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build task",
             "program": "${workspaceFolder}/src/Task/bin/Debug/net6.0/Task.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/Task/bin/Debug/net6.0",
             "stopAtEntry": false,
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Launch Cheker",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "showLog": true,
+            "program": "${workspaceFolder}/src/checker/checker/",
+            "args": [
+                "D:\\Projects\\OlympMil\\OlympMil2022\\src\\Task\\bin\\Debug\\net6.0\\Task.exe"
+            ]
         }
-
     ]
 }
