@@ -1,0 +1,16 @@
+{
+    "score": 1,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "helps"
+            ],
+            "expected": [
+                "Error: command \"helps\" not found in module \"officer\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "score": 1,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "help"
+            ],
+            "expected": [
+                "Commands:",
+                "- help -",
+                "- division -",
+                "- cadet -",
+                "- officer -"
+            ],
+            "is_critical": true
+        }
+    ]
+}

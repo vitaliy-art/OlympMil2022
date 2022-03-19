@@ -1,0 +1,23 @@
+{
+    "score": 2,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "add",
+                "help"
+            ],
+            "expected": [
+                "Officer add command parameters:",
+                "-f : first name, required",
+                "-m : middle name, required",
+                "-l : last name, required",
+                "-b : birth date, required, format yyyy-MM-dd",
+                "-r : rank, required",
+                "-d : division ID"
+            ],
+            "is_critical": true
+        }
+    ]
+}

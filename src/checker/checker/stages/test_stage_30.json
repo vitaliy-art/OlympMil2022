@@ -1,0 +1,19 @@
+{
+    "score": 1,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete",
+                "help"
+            ],
+            "expected": [
+                "Officer delete command parameters:",
+                "-i : ID",
+                "-a : delete all officers"
+            ],
+            "is_critical": true
+        }
+    ]
+}

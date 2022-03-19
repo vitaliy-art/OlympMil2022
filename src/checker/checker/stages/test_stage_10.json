@@ -1,0 +1,19 @@
+{
+    "score": 3,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "edit",
+                "help"
+            ],
+            "expected": [
+                "Division edit command parameters:",
+                "-i : Division ID, required",
+                "-n : Name, required"
+            ],
+            "is_critical": true
+        }
+    ]
+}

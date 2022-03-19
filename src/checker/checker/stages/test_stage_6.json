@@ -1,0 +1,17 @@
+{
+    "score": 1,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "list",
+                "help"
+            ],
+            "expected": [
+                "Division list command has no parameters"
+            ],
+            "is_critical": true
+        }
+    ]
+}

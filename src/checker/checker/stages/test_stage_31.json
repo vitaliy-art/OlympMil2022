@@ -1,0 +1,17 @@
+{
+    "score": 1,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete",
+                "helps"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        }
+    ]
+}

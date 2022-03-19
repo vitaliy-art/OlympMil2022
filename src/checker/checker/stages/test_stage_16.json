@@ -1,0 +1,24 @@
+{
+    "score": 2,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "list",
+                "help"
+            ],
+            "expected": [
+                "Cadet list command parameters:",
+                "-i : ID",
+                "-l : last name",
+                "-d : division ID",
+                "-r : rank",
+                "-o : division officer ID",
+                "-s : sorting, possible id, lastName",
+                "-p : properties view, combination of i - id, r - rank, f - firstName, m - middleName, l - lastName, b - birthDate"
+            ],
+            "is_critical": true
+        }
+    ]
+}
