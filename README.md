@@ -6,4 +6,6 @@
 
 Контекст и модели (C#): [./src/Task.Context](https://github.com/vitaliy-art/OlympMil2022/tree/main/src/Task.Context)
 
+Чекер (Go): [./src/checker/checker](https://github.com/vitaliy-art/OlympMil2022/tree/main/src/checker/checker)
+
 Документы: [./docs](https://github.com/vitaliy-art/OlympMil2022/tree/main/docs)
