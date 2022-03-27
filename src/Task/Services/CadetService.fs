@@ -63,7 +63,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
         | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId = x)
         | _ -> ()
         match offDId with
-        | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId |> Nullable = this.getOfficer(x).DivisionId)
+        | Some(x) -> query <- query.Where(fun c -> c.Division.DisplayId = int(this.getOfficer(x).DivisionId))
         | _ -> ()
         match rank with
         | Some(x) -> query <- query.Where(fun c -> c.Rank = x)
