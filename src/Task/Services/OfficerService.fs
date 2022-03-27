@@ -39,14 +39,6 @@ type OfficerService(factory: RepositoryFactory<Context>) =
 
         fndIdx 1
 
-    member private _.paramMissing (prms:string[], args:string[]) : bool =
-        let rec isMissing (i:int) =
-            if i = Array.length prms then false
-            else if not <| Array.contains prms.[i] args then true
-            else isMissing (i + 1)
-
-        isMissing 0
-
     member private _.getDivision (dId:int) =
         use rep = factory.GetRepository<Division>()
         let division = rep.GetAllQueryableAsync().Result.Where(fun d -> d.DisplayId = dId).First()
@@ -111,8 +103,8 @@ type OfficerService(factory: RepositoryFactory<Context>) =
                             | _ -> officers
             for officer in sorted do
                 match getValue("-o", args) with
-                | null -> officer.ToString() |> printf "%s"
-                | value -> officer.ToString(value) |> printf "%s"
+                | null -> officer.ToString() |> printf "%s\n"
+                | value -> officer.ToString(value) |> printf "%s\n"
 
     member private this.addHandle (args:string[]) =
         let addOfficer (officer:Officer) =
@@ -130,31 +122,33 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             -d : division ID"
             |> printf "%s"
         else
-            if this.paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"|], args) then notEnoughParams "add" "officer"
-            else
-                let divId = match getValue("-d", args) with
-                            | null -> None
-                            | id -> id |> int |> Some
-                let rank = Enum.Parse<SeniorRanks>(getValue("-r", args))
-                let date = DateOnly.Parse <| getValue("-b", args)
+            if paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"|], args) then notEnoughParams "add" "officer"
+            else match paramNotSet([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) with
+                 | Some(x) -> notSetParameter x "add"
+                 | None ->
+                    let divId = match getValue("-d", args) with
+                                | null -> None
+                                | id -> id |> int |> Some
+                    let rank = Enum.Parse<SeniorRanks>(getValue("-r", args))
+                    let date = DateOnly.Parse <| getValue("-b", args)
 
-                let person = Person(
-                    FirstName=getValue("-f", args),
-                    MiddleName=getValue("-m", args),
-                    LastName=getValue("-l", args),
-                    BirthDate=date
-                )
+                    let person = Person(
+                        FirstName=getValue("-f", args),
+                        MiddleName=getValue("-m", args),
+                        LastName=getValue("-l", args),
+                        BirthDate=date
+                    )
 
-                let officer = Officer(
-                    Person=person,
-                    DisplayId=this.getNewOfficerDisplayId,
-                    Rank=rank
-                )
+                    let officer = Officer(
+                        Person=person,
+                        DisplayId=this.getNewOfficerDisplayId,
+                        Rank=rank
+                    )
 
-                if divId.IsSome then
-                    officer.DivisionId <- this.getDivision(divId.Value).Id
+                    if divId.IsSome then
+                        officer.DivisionId <- this.getDivision(divId.Value).Id
 
-                addOfficer officer
+                    addOfficer officer
 
     member private this.editHandle (args:string[]) =
         if args.[0] = "help" then
@@ -168,7 +162,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             -d : division ID"
             |> printf "%s"
         else
-            if this.paramMissing([|"-i"|], args) then notEnoughParams "edit" "officer"
+            if paramMissing([|"-i"|], args) then notEnoughParams "edit" "officer"
             else
                 let dId = getValue("-i", args) |> int
                 let fName = getValue("-f", args)

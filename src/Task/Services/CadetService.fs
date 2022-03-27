@@ -108,27 +108,6 @@ type CadetService(factory: RepositoryFactory<Context>) =
                 | null -> cadet.ToString() |> printf "%s\n"
                 | value -> cadet.ToString(value) |> printf "%s\n"
 
-    member private _.paramMissing (prms:string[], args:string[]) : bool =
-        let rec isMissing (i:int) : bool =
-            if i = Array.length prms then false
-            else if not <| Array.contains prms.[i] args then true
-            else isMissing (i + 1)
-
-        isMissing 0
-
-    member private _.paramNotSet (prms:string[], args:string[]) : option<string> =
-        let rec IsNotSet (prms:string[]) : option<string> =
-            match getValue(prms[0], args) with
-            | null -> Some(prms[0])
-            | _ -> if Array.length prms > 1 then
-                    IsNotSet prms[1..]
-                   else
-                    None
-
-        IsNotSet prms
-
-
-
     member private this.addHandle (args:string[]) =
         let addCadet (cadet:Cadet) =
             use rep = factory.GetRepository<Cadet>()
@@ -145,8 +124,8 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -d : division ID, required\n"
             |> printf "%s"
         else
-            if this.paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) then notEnoughParams "add" "cadet"
-            else match this.paramNotSet([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) with
+            if paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) then notEnoughParams "add" "cadet"
+            else match paramNotSet([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) with
                  | Some(x) -> notSetParameter x "add"
                  | None ->
                     let divId = getValue("-d", args) |> int
@@ -181,7 +160,7 @@ type CadetService(factory: RepositoryFactory<Context>) =
             -d : division ID"
             |> printf "%s"
         else
-            if this.paramMissing([|"-i"|], args) then notEnoughParams "edit" "cadet"
+            if paramMissing([|"-i"|], args) then notEnoughParams "edit" "cadet"
             else
                 let dId = getValue("-i", args) |> int
                 let fName = getValue("-f", args)
