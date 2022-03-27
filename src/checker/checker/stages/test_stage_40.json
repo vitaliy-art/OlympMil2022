@@ -1,5 +1,6 @@
 {
     "score": 4,
+    "description": "Пункт требований: 40",
     "actions": [
         {
             "id": 1,
@@ -51,7 +52,7 @@
                 "-r",
                 "Major",
                 "-d",
-                "1"
+                "2"
             ],
             "expected": [
                 "Ok"

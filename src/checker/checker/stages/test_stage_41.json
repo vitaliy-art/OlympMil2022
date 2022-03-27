@@ -1,15 +1,16 @@
 {
-    "score": 1,
-    "description": "Пункт требований: 5",
+    "score": 2,
+    "description": "Пункт требований: 41",
     "actions": [
         {
             "id": 1,
             "parameters": [
                 "division",
-                "helps"
+                "list"
             ],
             "expected": [
-                "Error: command \"helps\" not found in module \"division\""
+                "{Division: {Id: 1, Name: Division1}}",
+                "{Division: {Id: 2, Name: Division2}}"
             ],
             "is_critical": true
         }
