@@ -31,7 +31,7 @@ public class Division
     public string Name { get; set; }
 
     public override string ToString() =>
-        $"{{Division: {{Id: {DisplayId}, Name: {Name}}}";
+        $"{{Division: {{Id: {DisplayId}, Name: {Name}}}}}";
 }
 
 public class Cadet
