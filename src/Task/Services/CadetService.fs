@@ -116,6 +116,18 @@ type CadetService(factory: RepositoryFactory<Context>) =
 
         isMissing 0
 
+    member private _.paramNotSet (prms:string[], args:string[]) : option<string> =
+        let rec IsNotSet (prms:string[]) : option<string> =
+            match getValue(prms[0], args) with
+            | null -> Some(prms[0])
+            | _ -> if Array.length prms > 1 then
+                    IsNotSet prms[1..]
+                   else
+                    None
+
+        IsNotSet prms
+
+
 
     member private this.addHandle (args:string[]) =
         let addCadet (cadet:Cadet) =
@@ -134,26 +146,28 @@ type CadetService(factory: RepositoryFactory<Context>) =
             |> printf "%s"
         else
             if this.paramMissing([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) then notEnoughParams "add" "cadet"
-            else
-                let divId = getValue("-d", args) |> int
-                let rank = Enum.Parse<JuniorRanks>(getValue("-r", args))
-                let date = DateOnly.Parse <| getValue("-b", args)
+            else match this.paramNotSet([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) with
+                 | Some(x) -> notSetParameter x "add"
+                 | None ->
+                    let divId = getValue("-d", args) |> int
+                    let rank = Enum.Parse<JuniorRanks>(getValue("-r", args))
+                    let date = DateOnly.Parse <| getValue("-b", args)
 
-                let person = Person(
-                    FirstName=getValue("-f", args),
-                    MiddleName=getValue("-m", args),
-                    LastName=getValue("-l", args),
-                    BirthDate=date
-                )
+                    let person = Person(
+                        FirstName=getValue("-f", args),
+                        MiddleName=getValue("-m", args),
+                        LastName=getValue("-l", args),
+                        BirthDate=date
+                    )
 
-                let cadet = Cadet(
-                    Person=person,
-                    DisplayId=this.getNewCadetDisplayId,
-                    DivisionId=this.getDivision(divId).Id,
-                    Rank=rank
-                )
+                    let cadet = Cadet(
+                        Person=person,
+                        DisplayId=this.getNewCadetDisplayId,
+                        DivisionId=this.getDivision(divId).Id,
+                        Rank=rank
+                    )
 
-                addCadet cadet
+                    addCadet cadet
 
     member private this.editHandle (args:string[]) =
         if args.[0] = "help" then
