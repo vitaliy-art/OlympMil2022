@@ -12,6 +12,15 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "delete checker db",
+            "command": "rm",
+            "type": "process",
+            "args": [
+                "-f",
+                "${workspaceFolder}/src/checker/checker/bd.db"
+            ]
         }
     ]
 }

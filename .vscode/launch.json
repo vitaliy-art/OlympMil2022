@@ -19,6 +19,7 @@
             "name": "Launch Cheker",
             "type": "go",
             "request": "launch",
+            "preLaunchTask": "delete checker db",
             "mode": "debug",
             "showLog": true,
             "program": "${workspaceFolder}/src/checker/checker/",
