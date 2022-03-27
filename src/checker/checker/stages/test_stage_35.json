@@ -1,0 +1,16 @@
+{
+    "score": 3,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "add"
+            ],
+            "expected": [
+                "Error: not enough params for command \"add\" in module \"cadet\". Type \"cadet add help\" for details"
+            ],
+            "is_critical": true
+        }
+    ]
+}

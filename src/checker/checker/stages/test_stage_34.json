@@ -1,0 +1,51 @@
+{
+    "score": 4,
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "add",
+                "-n",
+                "Division1"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: Division1}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 3,
+            "parameters": [
+                "division",
+                "add",
+                "-n",
+                "Division2"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 4,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: Division1}}",
+                "{Division: {Id: 2, Name: Division2}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}
