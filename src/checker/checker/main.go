@@ -31,6 +31,7 @@ func main() {
 	fmt.Print(string(colorReset), "\n\n")
 	failResults := ""
 	successResults := ""
+	successCount := 0
 
 	for i := 1; i < len(stages)+1; i++ {
 		result := stages[int32(i)].GetResultsString() + "\n\n" + strings.Repeat("=", 24) + "\n" + strings.Repeat("=", 24) + "\n\n"
@@ -38,6 +39,7 @@ func main() {
 		if stages[int32(i)].GetSuccess() {
 			totalScore += stages[int32(i)].Score
 			successResults += result
+			successCount += 1
 		} else {
 			failResults += result
 		}
@@ -55,5 +57,6 @@ func main() {
 
 	fmt.Println()
 	fmt.Println()
-	fmt.Println("Result: ", totalScore)
+	fmt.Println("Result ", successCount, "/", len(stages))
+	fmt.Println("Score: ", totalScore)
 }

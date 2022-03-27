@@ -11,8 +11,9 @@ type Stage struct {
 	success  bool
 	id       int32
 
-	Actions []*Action `json:"actions"`
-	Score   float64   `json:"score"`
+	Actions     []*Action `json:"actions"`
+	Score       float64   `json:"score"`
+	Description string    `json:"description"`
 }
 
 func (s *Stage) SetDuration(d time.Duration) {
@@ -44,10 +45,7 @@ func (s *Stage) Run(params []string) {
 
 	for _, a := range s.Actions {
 		a.Run(params)
-
-		if s.id == 14 {
-			fmt.Println()
-		}
+		s.duration += a.duration
 
 		if a.IsCritical && !a.IsSuccess() {
 			s.success = false
@@ -58,6 +56,7 @@ func (s *Stage) Run(params []string) {
 func (s Stage) GetResultsString() string {
 	result := ""
 	result += fmt.Sprint("Stage ", s.id, "\n")
+	result += fmt.Sprint("Description: ", s.Description, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 4), "Success: ", s.success, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 4), "Duration: ", s.duration, "\n")
 

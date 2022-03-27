@@ -12,6 +12,7 @@ import (
 type Action struct {
 	duration time.Duration
 	result   []string
+	err      []string
 	command  []string
 
 	Id         int32    `json:"id"`
@@ -46,7 +47,18 @@ func (a *Action) Run(params []string) {
 		wg.Done()
 	}()
 
-	<-time.After(5 * time.Second)
+	for i := 0; i < 5; i++ {
+		<-time.After(time.Second)
+
+		if out != nil || err != nil {
+			break
+		}
+	}
+
+	if a.duration == 0 {
+		a.duration = time.Second * 5
+	}
+
 	cancel()
 	wg.Wait()
 
@@ -55,10 +67,10 @@ func (a *Action) Run(params []string) {
 	}
 
 	if err != nil {
-		a.result = strings.Split(err.Error(), "\n")
-	} else {
-		a.result = strings.Split(string(out), "\n")
+		a.err = strings.Split(err.Error(), "\n")
 	}
+
+	a.result = strings.Split(string(out), "\n")
 
 	i := len(a.result) - 1
 
@@ -83,6 +95,15 @@ func (a Action) IsSuccess() (result bool) {
 
 func (a Action) GetResultString() string {
 	result := fmt.Sprint(strings.Repeat(" ", 4), "Action ", a.Id, "\n")
+
+	if a.err != nil {
+		result += fmt.Sprint(strings.Repeat(" ", 8), "Error:\n")
+
+		for _, e := range a.err {
+			result += fmt.Sprint(strings.Repeat(" ", 12), e, "\n")
+		}
+	}
+
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Success: ", a.IsSuccess(), "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Duration: ", a.duration, "\n")
 	result += fmt.Sprint(strings.Repeat(" ", 8), "Critical: ", a.IsCritical, "\n")
