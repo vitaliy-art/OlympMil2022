@@ -19,7 +19,7 @@
             "name": "Launch Cheker",
             "type": "go",
             "request": "launch",
-            "preLaunchTask": "build task",
+            "preLaunchTask": "checker pre-launch task",
             "mode": "debug",
             "showLog": true,
             "program": "${workspaceFolder}/src/checker/checker/",

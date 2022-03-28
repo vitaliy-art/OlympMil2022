@@ -12,6 +12,27 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "checker pre-launch task",
+            "dependsOn": "build task",
+            "windows": {
+                "type": "shell",
+                "command": "Remove-Item",
+                "args": [
+                    "${workspaceFolder}/src/checker/checker/bd.db",
+                    "-ea",
+                    "ig"
+                ]
+            },
+            "linux": {
+                "type": "process",
+                "command": "rm",
+                "args": [
+                    "-f",
+                    "${workspaceFolder}/src/checker/checker/bd.db"
+                ]
+            }
         }
     ]
 }
