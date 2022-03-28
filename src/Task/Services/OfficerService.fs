@@ -62,7 +62,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
         | Some(id) -> query <- query.Where(fun o -> o.Division.DisplayId = id)
         | _ -> ()
         match cadDId with
-        | Some(id) -> query <- query.Where(fun o -> o.Division.DisplayId |> Nullable = this.getCadet(id).DivisionId)
+        | Some(id) -> query <- query.Where(fun o -> o.Division.DisplayId = int(this.getCadet(id).DivisionId))
         | _ -> ()
         match rank with
         | Some(r) -> query <- query.Where(fun o -> o.Rank = r)
@@ -102,7 +102,7 @@ type OfficerService(factory: RepositoryFactory<Context>) =
                             | "lastName" -> officers.OrderBy(fun o -> o.Person.LastName).ToArray()
                             | _ -> officers
             for officer in sorted do
-                match getValue("-o", args) with
+                match getValue("-p", args) with
                 | null -> officer.ToString() |> printf "%s\n"
                 | value -> officer.ToString(value) |> printf "%s\n"
 
