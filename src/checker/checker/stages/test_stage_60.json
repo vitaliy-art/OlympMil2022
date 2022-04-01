@@ -6,7 +6,7 @@
             "id": 1,
             "parameters": [
                 "cadet",
-                "add",
+                "edit",
                 "-i",
                 "2",
                 "-f",
@@ -22,7 +22,7 @@
                 "-d"
             ],
             "expected": [
-                "Error: not set parameter \"-d\" for command \"add\""
+                "Error: not set parameter \"-d\" for command \"edit\""
             ],
             "is_critical": true
         }
