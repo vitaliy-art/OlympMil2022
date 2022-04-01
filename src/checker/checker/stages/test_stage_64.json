@@ -1,0 +1,33 @@
+{
+    "score": 4,
+    "description": "Пункт требований: 64",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "edit",
+                "-i",
+                "1",
+                "-r",
+                "Major"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "officer",
+                "list"
+            ],
+            "expected": [
+                "{Officer: {Id: 1, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 2, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}
