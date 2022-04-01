@@ -17,14 +17,26 @@ let getValue (valueOption: string, args: string[]) =
 
 let paramNotSet (prms:string[], args:string[]) : option<string> =
     let rec IsNotSet (prms:string[]) : option<string> =
-        match getValue(prms[0], args) with
-        | null -> Some(prms[0])
-        | _ -> if Array.length prms > 1 then
-                IsNotSet prms[1..]
-                else
-                None
+        if Array.contains prms.[0] args then
+            match getValue(prms.[0], args) with
+            | null -> Some(prms.[0])
+            | _ -> if Array.length prms > 1 then
+                    IsNotSet prms[1..]
+                    else
+                        None
+        else if Array.length prms > 1 then IsNotSet prms[1..] else None
 
     IsNotSet prms
+
+let noParams (prms:string[], args:string[]) : bool =
+    let mutable result = true
+
+    for prm in prms do
+        match getValue(prm, args) with
+        | null -> ()
+        | _ -> result <- false
+
+    result
 
 let paramMissing (prms:string[], args:string[]) : bool =
     let rec isMissing (i:int) : bool =
