@@ -163,39 +163,43 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             |> printf "%s"
         else
             if paramMissing([|"-i"|], args) then notEnoughParams "edit" "officer"
-            else
-                let dId = getValue("-i", args) |> int
-                let fName = getValue("-f", args)
-                let mName = getValue("-m", args)
-                let lName = getValue("-l", args)
-                let bDate = getValue("-b", args)
-                let rank = getValue("-r", args)
-                let divDId = getValue("-d", args)
+            else match paramNotSet([|"-f"; "-m"; "-l"; "-b"; "-r"; "-d"|], args) with
+                 | Some(x) -> notSetParameter x "edit"
+                 | None ->
+                    let dId = getValue("-i", args) |> int
+                    let fName = getValue("-f", args)
+                    let mName = getValue("-m", args)
+                    let lName = getValue("-l", args)
+                    let bDate = getValue("-b", args)
+                    let rank = getValue("-r", args)
+                    let divDId = getValue("-d", args)
+                    use rep = factory.GetRepository<Officer>()
+                    let officer = rep.GetAllQueryableAsync().Result.Where(fun o -> o.DisplayId = dId).First()
 
-                use rep = factory.GetRepository<Officer>()
-                let officer = rep.GetAllQueryableAsync().Result.Where(fun o -> o.DisplayId = dId).First()
+                    if [|fName; mName; lName; bDate; rank; divDId|].All(fun x -> x = null) then
+                        notEnoughParams "edit" "officer"
+                    else
+                        match fName with
+                        | null -> ()
+                        | name -> officer.Person.FirstName <- name
+                        match mName with
+                        | null -> ()
+                        | name -> officer.Person.MiddleName <- name
+                        match lName with
+                        | null -> ()
+                        | name -> officer.Person.LastName <- name
+                        match bDate with
+                        | null -> ()
+                        | date -> officer.Person.BirthDate <- DateOnly.Parse(date)
+                        match rank with
+                        | null -> ()
+                        | rank -> officer.Rank <- Enum.Parse<SeniorRanks>(rank)
+                        match divDId with
+                        | null -> ()
+                        | id -> officer.DivisionId <- this.getDivision(id |> int).Id
 
-                match fName with
-                | null -> ()
-                | name -> officer.Person.FirstName <- name
-                match mName with
-                | null -> ()
-                | name -> officer.Person.MiddleName <- name
-                match lName with
-                | null -> ()
-                | name -> officer.Person.LastName <- name
-                match bDate with
-                | null -> ()
-                | date -> officer.Person.BirthDate <- DateOnly.Parse(date)
-                match rank with
-                | null -> ()
-                | rank -> officer.Rank <- Enum.Parse<SeniorRanks>(rank)
-                match divDId with
-                | null -> ()
-                | id -> officer.DivisionId <- this.getDivision(id |> int).Id
-
-                rep.SaveAsync(officer).Wait()
-                printf "Ok"
+                        rep.SaveAsync(officer).Wait()
+                        printf "Ok"
 
     member private _.deleteHandle (args:string[]) =
         if args.[0] = "help" then
