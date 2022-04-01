@@ -1,0 +1,20 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 57",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "edit",
+                "-i",
+                "2",
+                "-n"
+            ],
+            "expected": [
+                "Error: not set parameter \"-n\" for command \"edit\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

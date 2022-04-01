@@ -1,0 +1,33 @@
+{
+    "score": 5,
+    "description": "Пункт требований: 58",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "edit",
+                "-i",
+                "1",
+                "-n",
+                "Division"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: Division}}",
+                "{Division: {Id: 2, Name: Division2}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}
