@@ -213,12 +213,14 @@ type OfficerService(factory: RepositoryFactory<Context>) =
             if Array.contains "-a" args then
                 let officers = rep.GetAllAsync().Result
                 rep.RemoveRangeAsync(officers).Wait()
-            else
+                printf "Ok"
+            else if Array.contains "-i" args then
                 match getValue("-i", args) with
-                | null -> ()
+                | null -> notSetParameter "-i" "delete"
                 | strId -> do
                     let id = strId |> int
                     let officer = rep.GetAllQueryableAsync().Result.Where(fun o -> o.DisplayId = id).First()
                     rep.RemoveAsync(officer).Wait()
+                    printf "Ok"
+            else notEnoughParams "edit" "officer"
 
-            printf "Ok"
