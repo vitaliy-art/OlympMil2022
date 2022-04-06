@@ -118,4 +118,5 @@ type DivisionService(factory: RepositoryFactory<Context>) =
             let all = Array.contains "-a" args
             if not <| isNull id then id |> int |> Some |> getDivisions |> deleteDivisions
             else if all then None |> getDivisions |> deleteDivisions
+            else if Array.contains "-i" args then notSetParameter "-i" "delete"
             else notEnoughParams "delete" "division"
