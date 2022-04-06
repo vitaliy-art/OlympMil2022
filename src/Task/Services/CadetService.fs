@@ -213,27 +213,36 @@ type CadetService(factory: RepositoryFactory<Context>) =
             if Array.contains "-a" args then
                 let cadets = rep.GetAllAsync().Result
                 rep.RemoveRangeAsync(cadets).Wait()
+                printf "Ok"
             else
-                match getValue("-i", args) with
-                | null -> ()
-                | strId -> do
-                    let id = strId |> int
-                    let cadet = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DisplayId = id).First()
-                    rep.RemoveAsync(cadet).Wait()
+                let _i, _d, _o = getValue("-i", args), getValue("-d", args), getValue("-o", args)
 
-                match getValue("-d", args) with
-                | null -> ()
-                | strId -> do
-                    let id  = strId |> int |> Nullable
-                    let cadets = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DivisionId = id)
-                    rep.RemoveRangeAsync(cadets).Wait()
+                if [|_i; _d; _o|].All(fun x -> x = null) then
+                    if Array.contains "-i" args then notSetParameter "-i" "delete"
+                    else if Array.contains "-d" args then notSetParameter "-d" "delete"
+                    else if Array.contains "-o" args then notSetParameter "-d" "delete"
+                    else notEnoughParams "delete" "cadet"
+                else
+                    match _i with
+                    | null -> ()
+                    | strId -> do
+                        let id = strId |> int
+                        let cadet = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DisplayId = id).First()
+                        rep.RemoveAsync(cadet).Wait()
 
-                match getValue("-o", args) with
-                | null -> ()
-                | strId -> do
-                    let oId = strId |> int
-                    let dId = this.getOfficer(oId).DivisionId
-                    let cadets = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DivisionId = dId)
-                    rep.RemoveRangeAsync(cadets).Wait()
+                    match _d with
+                    | null -> ()
+                    | strId -> do
+                        let id  = strId |> int |> Nullable
+                        let cadets = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DivisionId = id)
+                        rep.RemoveRangeAsync(cadets).Wait()
 
-            printf "Ok"
+                    match _o with
+                    | null -> ()
+                    | strId -> do
+                        let oId = strId |> int
+                        let dId = this.getOfficer(oId).DivisionId
+                        let cadets = rep.GetAllQueryableAsync().Result.Where(fun c -> c.DivisionId = dId)
+                        rep.RemoveRangeAsync(cadets).Wait()
+
+                    printf "Ok"
