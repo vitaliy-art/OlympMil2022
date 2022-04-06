@@ -1,13 +1,12 @@
 {
-    "score": 1,
-    "description": "Пункт требований: 22",
+    "score": 3,
+    "description": "Пункт требований: 69",
     "actions": [
         {
             "id": 1,
             "parameters": [
                 "cadet",
-                "delete",
-                "helps"
+                "delete"
             ],
             "expected": [
                 "Error: not enough params for command \"delete\" in module \"cadet\". Type \"cadet delete help\" for details"

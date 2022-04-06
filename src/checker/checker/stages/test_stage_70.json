@@ -1,16 +1,16 @@
 {
-    "score": 1,
-    "description": "Пункт требований: 31",
+    "score": 3,
+    "description": "Пункт требований: 74",
     "actions": [
         {
             "id": 1,
             "parameters": [
                 "officer",
                 "delete",
-                "helps"
+                "-i"
             ],
             "expected": [
-                "Error: not enough params for command \"edit\" in module \"officer\". Type \"officer edit help\" for details"
+                "Error: not set parameter \"-i\" for command \"delete\""
             ],
             "is_critical": true
         }

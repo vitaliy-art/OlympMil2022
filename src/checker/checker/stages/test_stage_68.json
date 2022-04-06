@@ -1,0 +1,29 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 72",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "delete",
+                "-a"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "cadet",
+                "list"
+            ],
+            "expected": [
+                ""
+            ],
+            "is_critical": true
+        }
+    ]
+}
