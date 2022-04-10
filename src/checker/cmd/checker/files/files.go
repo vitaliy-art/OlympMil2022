@@ -26,7 +26,7 @@ func init() {
 	for _, info := range fileInfos {
 		if !info.IsDir() {
 			if strings.HasPrefix(info.Name(), "test_stage_") && strings.HasSuffix(info.Name(), ".json") {
-				filenames = append(filenames, "./stages/"+info.Name())
+				filenames = append(filenames, fmt.Sprintf("./%s/", config.GetConfig().StagesDirName)+info.Name())
 			}
 		}
 	}
@@ -40,7 +40,7 @@ func GetStages(filenames []string) map[int32]*models.Stage {
 	stages := map[int32]*models.Stage{}
 
 	for _, fn := range filenames {
-		fnId := strings.ReplaceAll(strings.ReplaceAll(fn, ".json", ""), "./stages/test_stage_", "")
+		fnId := strings.ReplaceAll(strings.ReplaceAll(fn, ".json", ""), fmt.Sprintf("./%s/test_stage_", config.GetConfig().StagesDirName), "")
 		id, err := strconv.ParseInt(fnId, 10, 32)
 
 		if err != nil {
