@@ -7,7 +7,7 @@
             "parameters": [
                 "division",
                 "edit",
-                "helps"
+                "uyddr"
             ],
             "expected": [
                 "Error: not set parameter \"-i\" for command \"edit\""

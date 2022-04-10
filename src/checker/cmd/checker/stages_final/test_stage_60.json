@@ -11,18 +11,18 @@
                 "2",
                 "-f",
                 "FirstName",
-                "-m",
-                "MiddleName",
                 "-l",
                 "LastName",
                 "-b",
                 "1990-10-02",
                 "-r",
                 "Private",
-                "-d"
+                "-d",
+                "1",
+                "-m"
             ],
             "expected": [
-                "Error: not set parameter \"-d\" for command \"edit\""
+                "Error: not set parameter \"-m\" for command \"edit\""
             ],
             "is_critical": true
         }

@@ -10,7 +10,7 @@
                 "-i",
                 "1",
                 "-n",
-                "Division"
+                "Div1"
             ],
             "expected": [
                 "Ok"
@@ -24,8 +24,65 @@
                 "list"
             ],
             "expected": [
-                "{Division: {Id: 1, Name: Division}}",
-                "{Division: {Id: 2, Name: Division2}}"
+                "{Division: {Id: 1, Name: Div1}}",
+                "{Division: {Id: 2, Name: SecondDiv}}",
+                "{Division: {Id: 3, Name: ThirdDiv}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 3,
+            "parameters": [
+                "division",
+                "edit",
+                "-i",
+                "2",
+                "-n",
+                "Div2"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 4,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: Div1}}",
+                "{Division: {Id: 2, Name: Div2}}",
+                "{Division: {Id: 3, Name: ThirdDiv}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 5,
+            "parameters": [
+                "division",
+                "edit",
+                "-i",
+                "3",
+                "-n",
+                "Div3"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 6,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: Div1}}",
+                "{Division: {Id: 2, Name: Div2}}",
+                "{Division: {Id: 3, Name: Div3}}"
             ],
             "is_critical": true
         }

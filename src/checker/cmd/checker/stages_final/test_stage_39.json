@@ -15,12 +15,12 @@
                 "LastName",
                 "-b",
                 "1980-02-13",
-                "-r",
-                "Captain",
-                "-d"
+                "-d",
+                "1",
+                "-r"
             ],
             "expected": [
-                "Error: not set parameter \"-d\" for command \"add\""
+                "Error: not set parameter \"-r\" for command \"add\""
             ],
             "is_critical": true
         }

@@ -7,12 +7,12 @@
             "parameters": [
                 "division",
                 "edit",
-                "-i",
-                "2",
-                "-n"
+                "-n",
+                "Adastre",
+                "-i"
             ],
             "expected": [
-                "Error: not set parameter \"-n\" for command \"edit\""
+                "Error: not set parameter \"-i\" for command \"edit\""
             ],
             "is_critical": true
         }

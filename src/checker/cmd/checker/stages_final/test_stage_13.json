@@ -7,7 +7,7 @@
             "parameters": [
                 "division",
                 "delete",
-                "helps"
+                "opzse"
             ],
             "expected": [
                 "Error: not enough params for command \"delete\" in module \"division\". Type \"division delete help\" for details"

@@ -6,10 +6,10 @@
             "id": 1,
             "parameters": [
                 "officer",
-                "helps"
+                "coregh"
             ],
             "expected": [
-                "Error: command \"helps\" not found in module \"officer\""
+                "Error: command \"coregh\" not found in module \"officer\""
             ],
             "is_critical": true
         }

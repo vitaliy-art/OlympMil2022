@@ -8,11 +8,11 @@
                 "officer",
                 "add",
                 "-f",
-                "FirstName",
+                "Ivan",
                 "-m",
-                "MiddleName",
+                "Ivanovich",
                 "-l",
-                "LastName",
+                "Ivanov",
                 "-b",
                 "1980-02-13",
                 "-r",
@@ -32,7 +32,7 @@
                 "list"
             ],
             "expected": [
-                "{Officer: {Id: 1, Rank: Captain, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+                "{Officer: {Id: 1, Rank: Captain, FirstName: Ivan, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1980-02-13}}"
             ],
             "is_critical": true
         },
@@ -42,11 +42,11 @@
                 "officer",
                 "add",
                 "-f",
-                "FirstName",
+                "Petr",
                 "-m",
-                "MiddleName",
+                "Petrovich",
                 "-l",
-                "LastName",
+                "Petrov",
                 "-b",
                 "1980-02-13",
                 "-r",
@@ -66,8 +66,44 @@
                 "list"
             ],
             "expected": [
-                "{Officer: {Id: 1, Rank: Captain, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}",
-                "{Officer: {Id: 2, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+                "{Officer: {Id: 1, Rank: Captain, FirstName: Ivan, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 2, Rank: Major, FirstName: Petr, MiddleName: Petrovich, LastName: Petrov, BirthDate: 1980-02-13}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 5,
+            "parameters": [
+                "officer",
+                "add",
+                "-f",
+                "Semen",
+                "-m",
+                "Semenovich",
+                "-l",
+                "Semenov",
+                "-b",
+                "1980-02-13",
+                "-r",
+                "Major",
+                "-d",
+                "3"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 6,
+            "parameters": [
+                "officer",
+                "list"
+            ],
+            "expected": [
+                "{Officer: {Id: 1, Rank: Captain, FirstName: Ivan, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 2, Rank: Major, FirstName: Petr, MiddleName: Petrovich, LastName: Petrov, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 3, Rank: Major, FirstName: Semen, MiddleName: Semenovich, LastName: Semenov, BirthDate: 1980-02-13}}"
             ],
             "is_critical": true
         }

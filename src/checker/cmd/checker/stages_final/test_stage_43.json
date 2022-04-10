@@ -8,11 +8,10 @@
                 "cadet",
                 "list",
                 "-l",
-                "LastName"
+                "Semenov"
             ],
             "expected": [
-                "{Cadet: {Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}",
-                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+                "{Cadet: {Id: 3, Rank: Sergeant, FirstName: Semen, MiddleName: Semenovich, LastName: Semenov, BirthDate: 1990-10-02}}"
             ],
             "is_critical": true
         }

@@ -9,8 +9,9 @@
                 "list"
             ],
             "expected": [
-                "{Division: {Id: 1, Name: Division1}}",
-                "{Division: {Id: 2, Name: Division2}}"
+                "{Division: {Id: 1, Name: FirstDiv}}",
+                "{Division: {Id: 2, Name: SecondDiv}}",
+                "{Division: {Id: 3, Name: ThirdDiv}}"
             ],
             "is_critical": true
         }

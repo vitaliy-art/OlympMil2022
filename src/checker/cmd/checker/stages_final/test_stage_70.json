@@ -7,10 +7,10 @@
             "parameters": [
                 "officer",
                 "delete",
-                "-i"
+                "-d"
             ],
             "expected": [
-                "Error: not set parameter \"-i\" for command \"delete\""
+                "Error: not enough params for command \"delete\" in module \"officer\". Type \"officer delete help\" for details"
             ],
             "is_critical": true
         }

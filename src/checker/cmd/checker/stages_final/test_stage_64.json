@@ -10,7 +10,9 @@
                 "-i",
                 "1",
                 "-r",
-                "Major"
+                "Major",
+                "-f",
+                "Dmitriy"
             ],
             "expected": [
                 "Ok"
@@ -24,8 +26,9 @@
                 "list"
             ],
             "expected": [
-                "{Officer: {Id: 1, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}",
-                "{Officer: {Id: 2, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+                "{Officer: {Id: 1, Rank: Major, FirstName: Dmitriy, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 2, Rank: Major, FirstName: Petr, MiddleName: Petrovich, LastName: Petrov, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 3, Rank: Major, FirstName: Semen, MiddleName: Semenovich, LastName: Semenov, BirthDate: 1980-02-13}}"
             ],
             "is_critical": true
         }

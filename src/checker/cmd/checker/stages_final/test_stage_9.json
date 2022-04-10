@@ -7,7 +7,7 @@
             "parameters": [
                 "division",
                 "add",
-                "helps"
+                "ksple"
             ],
             "expected": [
                 "Error: not enough params for command \"add\" in module \"division\". Type \"division add help\" for details"

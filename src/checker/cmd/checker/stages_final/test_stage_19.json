@@ -7,7 +7,7 @@
             "parameters": [
                 "cadet",
                 "add",
-                "helps"
+                "xodegt"
             ],
             "expected": [
                 "Error: not enough params for command \"add\" in module \"cadet\". Type \"cadet add help\" for details"

@@ -11,7 +11,7 @@
                 "Private"
             ],
             "expected": [
-                "{Cadet: {Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+                "{Cadet: {Id: 1, Rank: Private, FirstName: Ivan, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1990-10-02}}"
             ],
             "is_critical": true
         },
@@ -24,7 +24,8 @@
                 "Sergeant"
             ],
             "expected": [
-                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: Petr, MiddleName: Petrovich, LastName: Petrov, BirthDate: 1990-10-02}}",
+                "{Cadet: {Id: 3, Rank: Sergeant, FirstName: Semen, MiddleName: Semenovich, LastName: Semenov, BirthDate: 1990-10-02}}"
             ],
             "is_critical": true
         }

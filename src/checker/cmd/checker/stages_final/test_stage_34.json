@@ -8,7 +8,7 @@
                 "division",
                 "add",
                 "-n",
-                "Division1"
+                "FirstDiv"
             ],
             "expected": [
                 "Ok"
@@ -22,7 +22,7 @@
                 "list"
             ],
             "expected": [
-                "{Division: {Id: 1, Name: Division1}}"
+                "{Division: {Id: 1, Name: FirstDiv}}"
             ],
             "is_critical": true
         },
@@ -32,7 +32,7 @@
                 "division",
                 "add",
                 "-n",
-                "Division2"
+                "SecondDiv"
             ],
             "is_critical": false
         },
@@ -43,8 +43,31 @@
                 "list"
             ],
             "expected": [
-                "{Division: {Id: 1, Name: Division1}}",
-                "{Division: {Id: 2, Name: Division2}}"
+                "{Division: {Id: 1, Name: FirstDiv}}",
+                "{Division: {Id: 2, Name: SecondDiv}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 5,
+            "parameters": [
+                "division",
+                "add",
+                "-n",
+                "ThirdDiv"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 6,
+            "parameters": [
+                "division",
+                "list"
+            ],
+            "expected": [
+                "{Division: {Id: 1, Name: FirstDiv}}",
+                "{Division: {Id: 2, Name: SecondDiv}}",
+                "{Division: {Id: 3, Name: ThirdDiv}}"
             ],
             "is_critical": true
         }

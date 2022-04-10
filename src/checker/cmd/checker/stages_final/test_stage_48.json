@@ -8,11 +8,12 @@
                 "cadet",
                 "list",
                 "-p",
-                "irfmlb"
+                "irfblm"
             ],
             "expected": [
-                "{Cadet: {Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}",
-                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+                "{Cadet: {Id: 1, Rank: Private, FirstName: Ivan, BirthDate: 1990-10-02, LastName: Ivanov, MiddleName: Ivanovich}}",
+                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: Petr, BirthDate: 1990-10-02, LastName: Petrov, MiddleName: Petrovich}}",
+                "{Cadet: {Id: 3, Rank: Sergeant, FirstName: Semen, BirthDate: 1990-10-02, LastName: Semenov, MiddleName: Semenovich}}"
             ],
             "is_critical": true
         },
@@ -22,11 +23,12 @@
                 "cadet",
                 "list",
                 "-p",
-                "birfml"
+                "bifrml"
             ],
             "expected": [
-                "{Cadet: {BirthDate: 1990-10-02, Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName}}",
-                "{Cadet: {BirthDate: 1990-10-02, Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName}}"
+                "{Cadet: {BirthDate: 1990-10-02, Id: 1, FirstName: Ivan, Rank: Private, MiddleName: Ivanovich, LastName: Ivanov}}",
+                "{Cadet: {BirthDate: 1990-10-02, Id: 2, FirstName: Petr, Rank: Sergeant, MiddleName: Petrovich, LastName: Petrov}}",
+                "{Cadet: {BirthDate: 1990-10-02, Id: 3, FirstName: Semen, Rank: Sergeant, MiddleName: Semenovich, LastName: Semenov}}"
             ],
             "is_critical": true
         }

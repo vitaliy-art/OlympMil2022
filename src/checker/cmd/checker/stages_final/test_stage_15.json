@@ -6,10 +6,10 @@
             "id": 1,
             "parameters": [
                 "cadet",
-                "helps"
+                "pasexcg"
             ],
             "expected": [
-                "Error: command \"helps\" not found in module \"cadet\""
+                "Error: command \"pasexcg\" not found in module \"cadet\""
             ],
             "is_critical": true
         }

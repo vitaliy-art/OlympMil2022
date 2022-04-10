@@ -5,10 +5,10 @@
         {
             "id": 1,
             "parameters": [
-                "helps"
+                "rtw"
             ],
             "expected": [
-                "Error: command \"helps\" not found in module \"main\""
+                "Error: command \"rtw\" not found in module \"main\""
             ],
             "is_critical": true
         }

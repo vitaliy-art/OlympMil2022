@@ -7,7 +7,7 @@
             "parameters": [
                 "officer",
                 "add",
-                "helps"
+                "vieoxf"
             ],
             "expected": [
                 "Error: not enough params for command \"add\" in module \"officer\". Type \"officer add help\" for details"

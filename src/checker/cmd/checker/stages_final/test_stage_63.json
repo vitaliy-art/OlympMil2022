@@ -9,20 +9,10 @@
                 "edit",
                 "-i",
                 "2",
-                "-f",
-                "FirstName",
-                "-m",
-                "MiddleName",
-                "-l",
-                "LastName",
-                "-b",
-                "1980-02-13",
-                "-r",
-                "Captain",
-                "-d"
+                "-f"
             ],
             "expected": [
-                "Error: not set parameter \"-d\" for command \"edit\""
+                "Error: not set parameter \"-f\" for command \"edit\""
             ],
             "is_critical": true
         }

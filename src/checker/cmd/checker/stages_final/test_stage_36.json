@@ -8,19 +8,19 @@
                 "cadet",
                 "add",
                 "-f",
-                "FirstName",
+                "Ivanov",
                 "-m",
-                "MiddleName",
+                "Ivan",
                 "-l",
-                "LastName",
+                "Ivanovich",
                 "-b",
                 "1990-10-02",
-                "-r",
-                "Private",
-                "-d"
+                "-d",
+                "1",
+                "-r"
             ],
             "expected": [
-                "Error: not set parameter \"-d\" for command \"add\""
+                "Error: not set parameter \"-r\" for command \"add\""
             ],
             "is_critical": true
         }

@@ -7,7 +7,7 @@
             "parameters": [
                 "officer",
                 "list",
-                "helps"
+                "apcdr"
             ],
             "expected": [
                 ""

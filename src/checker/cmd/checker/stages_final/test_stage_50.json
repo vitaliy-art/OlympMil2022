@@ -8,11 +8,23 @@
                 "officer",
                 "list",
                 "-l",
-                "LastName"
+                "Semenov"
             ],
             "expected": [
-                "{Officer: {Id: 1, Rank: Captain, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}",
-                "{Officer: {Id: 2, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+                "{Officer: {Id: 3, Rank: Major, FirstName: Semen, MiddleName: Semenovich, LastName: Semenov, BirthDate: 1980-02-13}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "officer",
+                "list",
+                "-l",
+                "Ivanov"
+            ],
+            "expected": [
+                "{Officer: {Id: 1, Rank: Captain, FirstName: Ivan, MiddleName: Ivanovich, LastName: Ivanov, BirthDate: 1980-02-13}}"
             ],
             "is_critical": true
         }
