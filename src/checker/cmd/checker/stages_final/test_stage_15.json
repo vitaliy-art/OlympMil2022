@@ -1,0 +1,17 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 15",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "helps"
+            ],
+            "expected": [
+                "Error: command \"helps\" not found in module \"cadet\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

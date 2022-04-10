@@ -1,0 +1,22 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 23",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "help"
+            ],
+            "expected": [
+                "Officer module commands:",
+                "- help -",
+                "- list -",
+                "- add -",
+                "- edit -",
+                "- delete -"
+            ],
+            "is_critical": true
+        }
+    ]
+}

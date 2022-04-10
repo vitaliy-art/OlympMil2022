@@ -1,0 +1,20 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 30",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete",
+                "help"
+            ],
+            "expected": [
+                "Officer delete command parameters:",
+                "-i : ID",
+                "-a : delete all officers"
+            ],
+            "is_critical": true
+        }
+    ]
+}

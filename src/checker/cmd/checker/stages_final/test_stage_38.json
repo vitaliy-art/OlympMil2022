@@ -1,0 +1,17 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 38",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "add"
+            ],
+            "expected": [
+                "Error: not enough params for command \"add\" in module \"officer\". Type \"officer add help\" for details"
+            ],
+            "is_critical": true
+        }
+    ]
+}

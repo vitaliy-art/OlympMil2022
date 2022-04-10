@@ -1,0 +1,22 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 4",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "help"
+            ],
+            "expected": [
+                "Division module commands:",
+                "- help -",
+                "- list -",
+                "- add -",
+                "- edit -",
+                "- delete -"
+            ],
+            "is_critical": true
+        }
+    ]
+}

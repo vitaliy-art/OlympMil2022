@@ -1,0 +1,17 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 24",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "helps"
+            ],
+            "expected": [
+                "Error: command \"helps\" not found in module \"officer\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

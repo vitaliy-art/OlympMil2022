@@ -1,0 +1,17 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 32",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "add"
+            ],
+            "expected": [
+                "Error: not enough params for command \"add\" in module \"division\". Type \"division add help\" for details"
+            ],
+            "is_critical": true
+        }
+    ]
+}

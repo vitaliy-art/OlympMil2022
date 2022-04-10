@@ -1,0 +1,20 @@
+{
+    "score": 2,
+    "description": "Пункт требований: 12",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "delete",
+                "help"
+            ],
+            "expected": [
+                "Division delete command parameters:",
+                "-i : Division ID",
+                "-a : Delete all divisions"
+            ],
+            "is_critical": true
+        }
+    ]
+}

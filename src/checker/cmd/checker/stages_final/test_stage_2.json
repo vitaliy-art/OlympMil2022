@@ -1,0 +1,20 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 2",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "help"
+            ],
+            "expected": [
+                "Commands:",
+                "- help -",
+                "- division -",
+                "- cadet -",
+                "- officer -"
+            ],
+            "is_critical": true
+        }
+    ]
+}

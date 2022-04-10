@@ -1,0 +1,29 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 76",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete",
+                "-a"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "officer",
+                "list"
+            ],
+            "expected": [
+                ""
+            ],
+            "is_critical": true
+        }
+    ]
+}

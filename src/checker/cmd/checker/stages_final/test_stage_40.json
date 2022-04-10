@@ -1,0 +1,75 @@
+{
+    "score": 4,
+    "description": "Пункт требований: 40",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "add",
+                "-f",
+                "FirstName",
+                "-m",
+                "MiddleName",
+                "-l",
+                "LastName",
+                "-b",
+                "1980-02-13",
+                "-r",
+                "Captain",
+                "-d",
+                "1"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "officer",
+                "list"
+            ],
+            "expected": [
+                "{Officer: {Id: 1, Rank: Captain, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 3,
+            "parameters": [
+                "officer",
+                "add",
+                "-f",
+                "FirstName",
+                "-m",
+                "MiddleName",
+                "-l",
+                "LastName",
+                "-b",
+                "1980-02-13",
+                "-r",
+                "Major",
+                "-d",
+                "2"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 4,
+            "parameters": [
+                "officer",
+                "list"
+            ],
+            "expected": [
+                "{Officer: {Id: 1, Rank: Captain, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}",
+                "{Officer: {Id: 2, Rank: Major, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1980-02-13}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}

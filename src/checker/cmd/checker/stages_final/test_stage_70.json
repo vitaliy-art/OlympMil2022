@@ -1,0 +1,18 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 74",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete",
+                "-i"
+            ],
+            "expected": [
+                "Error: not set parameter \"-i\" for command \"delete\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

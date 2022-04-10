@@ -1,0 +1,30 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 60",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "edit",
+                "-i",
+                "2",
+                "-f",
+                "FirstName",
+                "-m",
+                "MiddleName",
+                "-l",
+                "LastName",
+                "-b",
+                "1990-10-02",
+                "-r",
+                "Private",
+                "-d"
+            ],
+            "expected": [
+                "Error: not set parameter \"-d\" for command \"edit\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

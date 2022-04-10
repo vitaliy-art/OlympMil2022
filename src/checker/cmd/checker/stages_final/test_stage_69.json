@@ -1,0 +1,17 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 73",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "delete"
+            ],
+            "expected": [
+                "Error: not enough params for command \"delete\" in module \"officer\". Type \"officer delete help\" for details"
+            ],
+            "is_critical": true
+        }
+    ]
+}

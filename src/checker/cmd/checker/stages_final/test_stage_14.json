@@ -1,0 +1,22 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 14",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "help"
+            ],
+            "expected": [
+                "Cadet module commands:",
+                "- help -",
+                "- list -",
+                "- add -",
+                "- edit -",
+                "- delete -"
+            ],
+            "is_critical": true
+        }
+    ]
+}

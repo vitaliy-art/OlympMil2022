@@ -1,0 +1,19 @@
+{
+    "score": 2,
+    "description": "Пункт требований: 42",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "list",
+                "-i",
+                "2"
+            ],
+            "expected": [
+                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}

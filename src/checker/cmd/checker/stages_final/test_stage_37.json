@@ -1,0 +1,75 @@
+{
+    "score": 4,
+    "description": "Пункт требований: 37",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "add",
+                "-f",
+                "FirstName",
+                "-m",
+                "MiddleName",
+                "-l",
+                "LastName",
+                "-b",
+                "1990-10-02",
+                "-r",
+                "Private",
+                "-d",
+                "1"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 2,
+            "parameters": [
+                "cadet",
+                "list"
+            ],
+            "expected": [
+                "{Cadet: {Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+            ],
+            "is_critical": true
+        },
+        {
+            "id": 3,
+            "parameters": [
+                "cadet",
+                "add",
+                "-f",
+                "FirstName",
+                "-m",
+                "MiddleName",
+                "-l",
+                "LastName",
+                "-b",
+                "1990-10-02",
+                "-r",
+                "Sergeant",
+                "-d",
+                "2"
+            ],
+            "expected": [
+                "Ok"
+            ],
+            "is_critical": false
+        },
+        {
+            "id": 4,
+            "parameters": [
+                "cadet",
+                "list"
+            ],
+            "expected": [
+                "{Cadet: {Id: 1, Rank: Private, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}",
+                "{Cadet: {Id: 2, Rank: Sergeant, FirstName: FirstName, MiddleName: MiddleName, LastName: LastName, BirthDate: 1990-10-02}}"
+            ],
+            "is_critical": true
+        }
+    ]
+}

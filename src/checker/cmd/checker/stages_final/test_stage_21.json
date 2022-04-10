@@ -1,0 +1,22 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 21",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "delete",
+                "help"
+            ],
+            "expected": [
+                "Cadet delete command parameters:",
+                "-i : ID",
+                "-d : division ID",
+                "-o : division officer ID",
+                "-a : delete all cadets"
+            ],
+            "is_critical": true
+        }
+    ]
+}

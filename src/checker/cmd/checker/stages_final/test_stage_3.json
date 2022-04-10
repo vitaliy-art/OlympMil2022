@@ -1,0 +1,16 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 3",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "helps"
+            ],
+            "expected": [
+                "Error: command \"helps\" not found in module \"main\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "score": 2,
+    "description": "Пункт требований: 13",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "delete",
+                "helps"
+            ],
+            "expected": [
+                "Error: not enough params for command \"delete\" in module \"division\". Type \"division delete help\" for details"
+            ],
+            "is_critical": true
+        }
+    ]
+}

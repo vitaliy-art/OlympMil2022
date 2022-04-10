@@ -1,0 +1,18 @@
+{
+    "score": 3,
+    "description": "Пункт требований: 70",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "cadet",
+                "delete",
+                "-i"
+            ],
+            "expected": [
+                "Error: not set parameter \"-i\" for command \"delete\""
+            ],
+            "is_critical": true
+        }
+    ]
+}

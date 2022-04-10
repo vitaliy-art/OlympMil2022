@@ -1,0 +1,25 @@
+{
+    "score": 2,
+    "description": "Пункт требований: 29",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "officer",
+                "edit",
+                "help"
+            ],
+            "expected": [
+                "Officer edit command parameters:",
+                "-i : ID, required",
+                "-f : first name",
+                "-m : middle name",
+                "-l : last name",
+                "-b : birth date, format yyyy-MM-dd",
+                "-r : rank",
+                "-d : division ID"
+            ],
+            "is_critical": true
+        }
+    ]
+}

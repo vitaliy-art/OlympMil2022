@@ -1,0 +1,17 @@
+{
+    "score": 1,
+    "description": "Пункт требований: 5",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "division",
+                "helps"
+            ],
+            "expected": [
+                "Error: command \"helps\" not found in module \"division\""
+            ],
+            "is_critical": true
+        }
+    ]
+}
