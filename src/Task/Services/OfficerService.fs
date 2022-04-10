@@ -222,5 +222,5 @@ type OfficerService(factory: RepositoryFactory<Context>) =
                     let officer = rep.GetAllQueryableAsync().Result.Where(fun o -> o.DisplayId = id).First()
                     rep.RemoveAsync(officer).Wait()
                     printf "Ok"
-            else notEnoughParams "edit" "officer"
+            else notEnoughParams "delete" "officer"
 
