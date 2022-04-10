@@ -20,7 +20,7 @@
                 "type": "shell",
                 "command": "Remove-Item",
                 "args": [
-                    "${workspaceFolder}/src/checker/checker/bd.db",
+                    "${workspaceFolder}\\src\\checker\\cmd\\checker\\bd.db",
                     "-ea",
                     "ig"
                 ]
@@ -30,7 +30,7 @@
                 "command": "rm",
                 "args": [
                     "-f",
-                    "${workspaceFolder}/src/checker/checker/bd.db"
+                    "${workspaceFolder}/src/checker/cmd/checker/bd.db"
                 ]
             }
         }

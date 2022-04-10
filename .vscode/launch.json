@@ -22,7 +22,7 @@
             "preLaunchTask": "checker pre-launch task",
             "mode": "debug",
             "showLog": true,
-            "program": "${workspaceFolder}/src/checker/checker/",
+            "program": "${workspaceFolder}/src/checker/cmd/checker/",
             "args": [
                 "D:\\Projects\\OlympMil\\OlympMil2022\\src\\Task\\bin\\Debug\\net6.0\\Task.exe"
             ]

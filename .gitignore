@@ -460,8 +460,9 @@ src/Task/bd.db
 src/Task/bd.db-shm
 src/Task/bd.db-wal
 docs/.~lock.Задание.docx#
-src/checker/checker/fails
-src/checker/checker/successes
-src/checker/checker/bd.db
+src/checker/cmd/checker/fails
+src/checker/cmd/checker/successes
+src/checker/cmd/checker/bd.db
 src/bd.db
 docs/.~lock.Задание 2 тур.docx#
+src/checker/cmd/checker/config.json

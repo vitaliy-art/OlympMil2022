@@ -1,7 +1,8 @@
 package files
 
 import (
-	"checker/src/checker/checker/models"
+	"checker/src/checker/cmd/checker/config"
+	"checker/src/checker/models"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -16,7 +17,7 @@ import (
 var filenames = []string{}
 
 func init() {
-	fileInfos, err := ioutil.ReadDir("./stages/")
+	fileInfos, err := ioutil.ReadDir(config.GetConfig().StagesDirName)
 
 	if err != nil {
 		log.Fatal(err)

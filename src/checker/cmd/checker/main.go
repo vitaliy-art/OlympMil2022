@@ -1,7 +1,7 @@
 package main
 
 import (
-	"checker/src/checker/checker/files"
+	"checker/src/checker/cmd/checker/files"
 	"fmt"
 	"os"
 	"strings"
