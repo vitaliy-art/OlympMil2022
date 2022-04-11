@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package grpc;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./grpc";
+
+service StagesService {
+    rpc SaveStages(SaveStagesRequest) returns (Empty) {}
+}
+
+message SaveStagesRequest {
+    string ClientId = 1;
+    bool IsFinal = 2;
+    repeated Stage Stages = 3;
+}
+
+message Stage {
+    int32 Id = 1;
+    float Score = 2;
+    string Description = 3;
+    google.protobuf.Timestamp Duration = 4;
+    bool Success = 5;
+    repeated Action Actions = 6;
+}
+
+message Action {
+    int32 Id = 1;
+    repeated string Parameters = 2;
+    bool IsCritical = 3;
+    google.protobuf.Timestamp Duration = 4;
+    repeated string Expected = 5;
+    repeated string Result = 6;
+    repeated string Error = 7;
+    repeated string Command = 8;
+}
+
+message Empty {}
