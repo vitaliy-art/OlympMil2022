@@ -1,0 +1,3 @@
+{{ range $key, $val := .results }}
+    <p><a href="/{{ $key }}">{{ $key }}</a> | {{ $val.SuccessStages }} / {{ $val.StagesCount }} | {{ $val.Score }}</p>
+{{ end }}
