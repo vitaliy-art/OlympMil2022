@@ -1,0 +1,18 @@
+{
+    "score": 1,
+    "description": "Вычитание",
+    "actions": [
+        {
+            "id": 1,
+            "parameters": [
+                "-",
+                "100",
+                "56"
+            ],
+            "expected": [
+                "44"
+            ],
+            "is_critical": true
+        }
+    ]
+}
