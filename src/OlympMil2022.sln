@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Task", "Task\Task.fsproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Context", "Task.Context\Task.Context.csproj", "{8238BE54-1ABD-41F5-B740-06434284545B}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test", "Test\Test.fsproj", "{0E38AF04-815C-4752-A34F-8D2604EA2EA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8238BE54-1ABD-41F5-B740-06434284545B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8238BE54-1ABD-41F5-B740-06434284545B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8238BE54-1ABD-41F5-B740-06434284545B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E38AF04-815C-4752-A34F-8D2604EA2EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E38AF04-815C-4752-A34F-8D2604EA2EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E38AF04-815C-4752-A34F-8D2604EA2EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E38AF04-815C-4752-A34F-8D2604EA2EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

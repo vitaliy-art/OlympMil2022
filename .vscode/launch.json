@@ -26,6 +26,26 @@
             "args": [
                 "D:\\Projects\\OlympMil\\OlympMil2022\\src\\Task\\bin\\Debug\\net6.0\\Task.exe"
             ]
+        },
+        {
+            "name": "Launch Cheker Test",
+            "type": "go",
+            "request": "launch",
+            "preLaunchTask": "checker pre-launch task",
+            "mode": "debug",
+            "showLog": true,
+            "program": "${workspaceFolder}/src/checker/cmd/checker/",
+            "args": [
+                "D:\\Projects\\OlympMil\\OlympMil2022\\src\\Test\\bin\\Debug\\net6.0\\Test.exe"
+            ]
+        },
+        {
+            "name": "Launch Server",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "showLog": true,
+            "program": "${workspaceFolder}/src/checker/cmd/server/"
         }
     ]
 }

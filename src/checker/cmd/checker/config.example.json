@@ -1,1 +1,1 @@
-{"checkerId":"84a2006e-11f7-455d-8128-50b6e1542586","stagesDirName":"./stages","checkerHost":"127.0.0.1","checkerPort":8181}
+{"stagesDirName":"./stages","checkerHost":"127.0.0.1","checkerPort":8181,"final":false}
