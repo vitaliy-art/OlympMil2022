@@ -1,12 +1,15 @@
 package models
 
 import (
+	"checker/src/checker/cmd/server/grpc"
 	"context"
 	"fmt"
 	"os/exec"
 	"strings"
 	"sync"
 	"time"
+
+	"google.golang.org/protobuf/types/known/durationpb"
 )
 
 type Action struct {
@@ -128,4 +131,28 @@ func (a Action) GetResultString() string {
 
 	result += "\n"
 	return result
+}
+
+func (a *Action) FromProto(pAction *grpc.Action) {
+	a.command = pAction.Command
+	a.duration = pAction.Duration.AsDuration()
+	a.err = pAction.Error
+	a.result = pAction.Result
+	a.Expected = pAction.Expected
+	a.Id = pAction.Id
+	a.IsCritical = pAction.IsCritical
+	a.Parameters = pAction.Parameters
+}
+
+func (a Action) ToProto() *grpc.Action {
+	return &grpc.Action{
+		Id:         a.Id,
+		Parameters: a.Parameters,
+		IsCritical: a.IsCritical,
+		Duration:   durationpb.New(a.duration),
+		Expected:   a.Expected,
+		Result:     a.result,
+		Error:      a.err,
+		Command:    a.command,
+	}
 }

@@ -26,6 +26,14 @@
             "args": [
                 "D:\\Projects\\OlympMil\\OlympMil2022\\src\\Task\\bin\\Debug\\net6.0\\Task.exe"
             ]
+        },
+        {
+            "name": "Launch Server",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "showLog": true,
+            "program": "${workspaceFolder}/src/checker/cmd/server/"
         }
     ]
 }

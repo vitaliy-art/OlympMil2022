@@ -1,7 +1,11 @@
 package main
 
 import (
+	"checker/src/checker/cmd/checker/config"
 	"checker/src/checker/cmd/checker/files"
+	"checker/src/checker/internal"
+	"checker/src/checker/models"
+	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -13,13 +17,17 @@ var colorRed = "\033[31m"
 var colorGreen = "\033[32m"
 
 func main() {
+	config := config.GetConfig()
 	params := os.Args[1:]
 
 	filenames := files.GetFilenames()
 	stages := files.GetStages(filenames)
+	stagesForSend := []models.Stage{}
 
 	for i := 1; i < len(stages)+1; i++ {
-		stages[int32(i)].Run(params)
+		stage := stages[int32(i)]
+		stage.Run(params)
+		stagesForSend = append(stagesForSend, *stage)
 
 		if stages[int32(i)].GetSuccess() {
 			fmt.Print(string(colorGreen), "Test ", i, ": Ok\n")
@@ -27,6 +35,9 @@ func main() {
 			fmt.Print(string(colorRed), "Test ", i, ": Fail\n")
 		}
 	}
+
+	client := internal.GetDefaultLocalGrpcClient()
+	_ = client.SaveStages(context.Background(), config.CheckerId, config.IsFinal, stagesForSend)
 
 	fmt.Print(string(colorReset), "\n\n")
 	failResults := ""

@@ -466,3 +466,5 @@ src/checker/cmd/checker/bd.db
 src/bd.db
 docs/.~lock.Задание 2 тур.docx#
 src/checker/cmd/checker/config.json
+src/checker/cmd/server/checker_server_bd.db
+src/checker/cmd/checker/checker.exe

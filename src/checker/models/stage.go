@@ -1,9 +1,12 @@
 package models
 
 import (
+	"checker/src/checker/cmd/server/grpc"
 	"fmt"
 	"strings"
 	"time"
+
+	"google.golang.org/protobuf/types/known/durationpb"
 )
 
 type Stage struct {
@@ -65,4 +68,38 @@ func (s Stage) GetResultsString() string {
 	}
 
 	return result
+}
+
+func (s *Stage) FromProto(pStage *grpc.Stage) {
+	s.duration = pStage.Duration.AsDuration()
+	s.id = pStage.Id
+	s.success = pStage.Success
+	s.Actions = []*Action{}
+
+	for _, a := range pStage.Actions {
+		action := &Action{}
+		action.FromProto(a)
+		s.Actions = append(s.Actions, action)
+	}
+
+	s.Description = pStage.Description
+	s.Score = float64(pStage.Score)
+}
+
+func (s Stage) ToProto() *grpc.Stage {
+	actions := []*grpc.Action{}
+
+	for _, a := range s.Actions {
+		action := a.ToProto()
+		actions = append(actions, action)
+	}
+
+	return &grpc.Stage{
+		Id:          s.id,
+		Score:       float32(s.Score),
+		Description: s.Description,
+		Duration:    durationpb.New(s.duration),
+		Success:     s.success,
+		Actions:     actions,
+	}
 }

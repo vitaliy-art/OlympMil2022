@@ -14,6 +14,7 @@ type Config struct {
 	StagesDirName string `json:"stagesDirName"`
 	CheckerHost   string `json:"checkerHost"`
 	CheckerPort   int32  `json:"checkerPort"`
+	IsFinal       bool   `json:"final"`
 }
 
 var config = &Config{}
