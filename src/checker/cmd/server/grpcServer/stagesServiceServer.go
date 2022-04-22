@@ -21,13 +21,17 @@ func (StagesServiceServerImpl) SaveStages(ctx context.Context, req *grpc.SaveSta
 		stages = append(stages, *stage)
 	}
 
-	record := &models.Record{
-		Uuid: req.ClientId,
-	}
+	record := &models.Record{}
+	db.Find(record, &models.Record{Uuid: req.ClientId})
 
 	if err := record.SetStages(stages); err != nil {
 		return nil, err
 	}
 
-	return &grpc.Empty{}, db.Save(record).Error
+	if record.Uuid == "" {
+		record.Uuid = req.ClientId
+		return &grpc.Empty{}, db.Create(record).Error
+	} else {
+		return &grpc.Empty{}, db.Save(record).Error
+	}
 }
